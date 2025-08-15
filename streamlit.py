@@ -3,7 +3,7 @@ from crewai import Task, Agent, Crew, LLM, Process
 import os
 
 
-api_key = "AIzaSyBm9NO6lMxqKT2Kh5LAW6w_Ng1JGQvOjMk"
+api_key = "AIza********************OjMk"
 
 os.environ["GEMINI_API_KEY"] = api_key
 
