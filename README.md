@@ -1,2 +1,2 @@
-# crew_article
+streamlit run streamlit.py
 
