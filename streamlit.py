@@ -33,7 +33,12 @@ summerize_agent = Agent(
     verbose=True)
 
 task_2 = Task(
-    description="Summerize the articles or rewrite it in different way so that you can show the main point ,the important information and can ignore what think that everyone knows or not interesting and if you mention at most just two examples ",
+    description="""
+        Summerize the articles or rewrite it in different way so that 
+        you can show the main point ,the important information and can
+        ignore what think that everyone knows or not interesting and if 
+        you mention at most just two examples 
+        """,
     expected_output="maximum tewnty lines ",
     agent=summerize_agent,
     context=[task_1],
@@ -47,8 +52,13 @@ fact_checker_agent = Agent(
     verbose=True)
 
 task_3 = Task(
-    description="Extract some lines of the article and ensure that it is matching with the title by adding some detail which not mentioned in the article or giving your own evidence",
-    expected_output="maximum ten lines ",
+    description="""
+        Extract some lines of the article and ensure that it is 
+        matching with the title by first tell how much it matching 
+        the title (precentage) and adding some detail which not mentioned 
+        in the article or giving your own evidence
+            """,
+    expected_output="maximum ten lines",
     agent=fact_checker_agent,
     context=[task_1],
     verbose=True)
@@ -74,5 +84,12 @@ article_crew = Crew(
 
 result = article_crew.kickoff()
 
-st.write(result)
+for task in result.tasks_output:
+
+    for line in task.raw.split("\n"):
+
+        st.markdown(line.strip())
+    
+    st.markdown("*"*26 + " Task End " + "*"*26)
+
 
